@@ -11,9 +11,13 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Google Tag Manager (GTM-NVJ3XGV8) -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NVJ3XGV8"></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVJ3XGV8');</script>
 
-    <!-- Google tag (gtag.js) for Google Ads Conversion Tracking -->
+    <!-- Google tag (gtag.js) for Google Ads (AW-18574577177) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18574577177"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -22,7 +26,7 @@
       gtag('config', 'AW-18574577177');
     </script>
 
-    <!-- Global Conversion Snippet (Google Ads Direct Call Only + GTM DataLayer) -->
+    <!-- Direct Call Conversion Handler for Google Ads Contact (AW-18574577177/-HJ7CPXwwr0dEJmchplF) -->
     <script>
       function gtag_report_conversion(url, type) {
         window.dataLayer = window.dataLayer || [];
@@ -31,24 +35,26 @@
           'conversion_type': type || 'lead'
         });
 
-        var navigated = false;
-        var callback = function () {
-          if (!navigated && typeof(url) !== 'undefined' && url !== '') {
-            navigated = true;
-            window.location.href = url;
-          }
-        };
+        var isPhoneCall = (type === 'phone_call');
+        var didNavigate = false;
 
-        if (type === 'phone_call') {
-          gtag('event', 'conversion', {
-            'send_to': 'AW-18574577177/-HJ7CPXwwr0dEJmchplF',
-            'event_callback': callback
-          });
-          setTimeout(callback, 600);
-        } else {
-          callback();
+        function goToTarget() {
+          if (!didNavigate && typeof(url) === 'string' && url.length > 0) {
+            didNavigate = true;
+            window.location.assign(url);
+          }
         }
 
+        if (isPhoneCall && typeof(gtag) === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18574577177/-HJ7CPXwwr0dEJmchplF',
+            'event_callback': goToTarget
+          });
+          setTimeout(goToTarget, 800);
+          return false;
+        }
+
+        goToTarget();
         return false;
       }
     </script>
@@ -148,3 +154,316 @@
         .main-content { max-width: 1250px; margin: 0 auto; padding: 40px 15px; }
         .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-size: 1.8rem; color: var(--dark-navy); font-weight: 900; }
+        .section-header p { color: var(--text-muted); font-size: 0.95rem; font-weight: 600; }
+
+        .category-block { margin-bottom: 40px; }
+        .category-title-bar { display: flex; align-items: center; gap: 10px; background: var(--white); padding: 12px 16px; border-radius: 12px; border-right: 5px solid var(--accent-orange); margin-bottom: 15px; }
+        .category-title-bar i { font-size: 1.2rem; color: var(--accent-orange); }
+        .category-title-bar h3 { font-size: 1.1rem; color: var(--dark-navy); font-weight: 800; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; }
+        .service-card { background: var(--white); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-card); border: 1px solid #e2e8f0; }
+        .icon-wrapper { width: 45px; height: 45px; background: rgba(0, 102, 148, 0.1); color: var(--primary-blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 12px; }
+        .service-card h4 { font-size: 1.05rem; color: var(--dark-navy); font-weight: 800; margin-bottom: 6px; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .form-section-container { background: var(--white); border-radius: 20px; padding: 25px; box-shadow: var(--shadow-card); border: 2px solid var(--primary-blue); max-width: 800px; margin: 30px auto 0 auto; }
+        .form-section-container h2 { text-align: center; font-size: 1.5rem; color: var(--dark-navy); font-weight: 900; }
+        .form-section-container p { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+        .field-group { display: flex; flex-direction: column; gap: 5px; }
+        .field-group label { font-size: 0.88rem; font-weight: 700; color: var(--dark-navy); }
+        .field-group input, .field-group select { padding: 11px; border: 1px solid #94a3b8; border-radius: 8px; font-size: 0.92rem; color: var(--text-main); background: var(--white); }
+
+        .btn-submit-booking { background: var(--accent-orange); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+
+        .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); box-shadow: 0 -4px 20px rgba(0,0,0,0.12); display: flex; padding: 8px; gap: 8px; z-index: 1000; }
+        .bottom-action-bar a { flex: 1; padding: 11px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .act-call-btn { background: var(--accent-orange); color: var(--white); }
+        .act-wa-btn { background: var(--whatsapp-green); color: var(--white); }
+
+        footer { background: var(--dark-navy); color: var(--white); text-align: center; padding: 25px 15px; margin-top: 50px; font-size: 0.88rem; border-top: 3px solid var(--primary-blue); }
+        footer p { margin-bottom: 6px; font-weight: 600; }
+        footer a { color: #ffffff; text-decoration: underline; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .nav-container { justify-content: center; text-align: center; }
+            .nav-links { display: none; }
+            .header-actions { width: 100%; justify-content: center; margin-top: 5px; }
+            .hero-section { min-height: auto; display: block; }
+            .hero-container { grid-template-columns: 1fr; }
+            .hero-right { min-height: 250px; }
+            .hero-main-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJ3XGV8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="top-bar">
+        الخدمة الطبية والإسعافية تابعة لـ مركز الإسكندرية لجراحة الأطفال (APS) - متوفرة 24 ساعة
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo-area" aria-label="إسعاف إسكندرية - مركز الإسكندرية لجراحة الأطفال">
+                <svg width="45" height="45" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شعار مركز الإسكندرية لجراحة الأطفال APS">
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="#006694" stroke-width="10"/>
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="#c2410c" stroke-width="6"/>
+                    <path d="M 40 100 A 60 60 0 0 1 160 100" fill="none" id="textPathTop" />
+                    <text font-family="Cairo, sans-serif" font-weight="bold" font-size="11" fill="#006694">
+                        <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">Alexandria Pediatric Surgery Center</textPath>
+                    </text>
+                    <path d="M 160 100 A 60 60 0 0 1 40 100" fill="none" id="textPathBottom" />
+                    <text font-family="Cairo, sans-serif" font-weight="bold" font-size="12" fill="#006694">
+                        <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">مركز الإسكندرية لجراحة الأطفال</textPath>
+                    </text>
+                    <g transform="translate(65, 45) scale(0.7)">
+                        <path d="M 50 30 C 30 10 0 30 20 60 L 50 90 L 80 60 C 100 30 70 10 50 30 Z" fill="none" stroke="#006694" stroke-width="5"/>
+                        <circle cx="50" cy="35" r="10" fill="#006694"/>
+                        <path d="M 35 60 Q 50 75 65 60" fill="none" stroke="#006694" stroke-width="5" stroke-linecap="round"/>
+                    </g>
+                    <text x="100" y="148" font-family="Cairo, sans-serif" font-weight="900" font-size="26" fill="#c2410c" text-anchor="middle">APS</text>
+                </svg>
+
+                <div class="brand-text">
+                    <span class="brand-title">إسعاف إسكندرية</span>
+                    <p>مركز الإسكندرية لجراحة الأطفال</p>
+                </div>
+            </a>
+
+            <nav aria-label="القائمة الرئيسية">
+                <ul class="nav-links">
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#pediatric">نقل الأطفال</a></li>
+                    <li><a href="#corporate">تأمين الماتشات والشركات</a></li>
+                    <li><a href="#booking">طلب سيارة</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/201276677640" onclick="return gtag_report_conversion('https://wa.me/201276677640', 'whatsapp_click');" class="btn-head-wa" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> واتساب
+                </a>
+                <a href="tel:01276677640" onclick="return gtag_report_conversion('tel:01276677640', 'phone_call');" class="btn-head-call">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i> 01276677640
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-card">
+                    <span class="card-header-badge">APS الإسعاف الطبي</span>
+                    <h2>طلب إسعاف فوري</h2>
+                    <p class="sub-title">مركز الإسكندرية لجراحة الأطفال والرعاية المتخصصة</p>
+
+                    <div class="promo-wrap">
+                        <span class="promo-ribbon">
+                            <i class="fa-solid fa-tag" aria-hidden="true"></i> خصم خاص
+                        </span>
+                    </div>
+
+                    <a href="tel:01276677640" onclick="return gtag_report_conversion('tel:01276677640', 'phone_call');" class="btn-card-call">
+                        <span>طوارئ الاتصال المباشر</span>
+                        <span>01276677640 <i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                    </a>
+
+                    <a href="https://wa.me/201276677640" onclick="return gtag_report_conversion('https://wa.me/201276677640', 'whatsapp_click');" class="btn-card-wa" rel="noopener noreferrer">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;" aria-hidden="true"></i>
+                        <div>
+                            <div class="btn-card-wa-sub">طلب حجز وتراسل سريع</div>
+                            <div>إرسال تفاصيل الحالة واتساب</div>
+                        </div>
+                    </a>
+
+                    <div class="equipment-box">
+                        <div class="equipment-title">
+                            <i class="fa-solid fa-shield-heart" aria-hidden="true"></i> تجهيز طبي متكامل وأطباء متخصصون:
+                        </div>
+                        <div class="equipment-desc">
+                            حضانات متنقلة، أجهزة تنفس صناعي، مرافقة أطباء جراحة وأطفال، وتأمين الملاعب والشركات.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <span class="hero-right-badge">✨ تابعة لـ مركز الإسكندرية لجراحة الأطفال (APS)</span>
+                    <h1 class="hero-main-title">
+                        إسعاف إسكندرية<br>
+                        <span>رعاية ونَقْل طبي متطور</span> للأطفال والبالغين
+                    </h1>
+                    <p class="hero-description">
+                        خدمات النقل الطبي المجهز بعناية مركّزة، وحضانات المبتسرين، وتأمين المباريات والشركات بوجود <strong>أطباء متخصصين</strong> <strong>داخل الإسكندرية ولجميع المحافظات</strong>.
+                    </p>
+
+                    <div class="hero-pills">
+                        <div class="pill-item"><i class="fa-solid fa-trophy" aria-hidden="true"></i> تأمين الماتشات والأنشطة</div>
+                        <div class="pill-item"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> مرافقة أطباء متخصصين</div>
+                        <div class="pill-item"><i class="fa-solid fa-building" aria-hidden="true"></i> تعاقدات المؤسسات والشركات</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-content" id="services">
+            <div class="section-header">
+                <h2>خدماتنا الإسعافية والطبية المتكاملة 🚑🇪🇬</h2>
+                <p>منظومة لنقل الحالات الحرجة، مرافقة الأطباء، وتأمين الفعاليات والشركات</p>
+            </div>
+
+            <div class="category-block" id="pediatric">
+                <div class="category-title-bar">
+                    <i class="fa-solid fa-kit-medical" aria-hidden="true"></i>
+                    <h3>1. خدمات الطوارئ والعناية الحرجة</h3>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i></div>
+                        <h4>إسعاف فوري واستجابة سريعة</h4>
+                        <p>استجابة مباشرة على مدار 24 ساعة لبلاغات الطوارئ مع توجيه أقرب سيارة مجهزة فوراً للموقع.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
+                        <h4>مرافقة أطباء متخصصين</h4>
+                        <p>إمكانية توفير أطباء متخصصين (جراحة، أطفال، عناية مركزة) لمرافقة الحالة أثناء النقل الطبي.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+                        <h4>رعاية مركزة متنقلة (فئة A)</h4>
+                        <p>تجهيز كامل للحالات الحرجة بأجهزة التنفس الصناعي (Ventilator) ومراقبة العلامات الحيوية.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-baby-carriage" aria-hidden="true"></i></div>
+                        <h4>حضانات حديثي الولادة (Incubators)</h4>
+                        <p>وحدة عناية مصغرة متخصصة ونقالات آمنة لنقل الأطفال المبتسرين وناقصي النمو بين المستشفيات.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-block" id="corporate">
+                <div class="category-title-bar">
+                    <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+                    <h3>2. تأمين المباريات وتعاقدات الشركات</h3>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-futbol" aria-hidden="true"></i></div>
+                        <h4>تأمين المباريات والبطولات الرياضية</h4>
+                        <p>توفير سيارات إسعاف مجهزة بالكامل وطاقم طبي مؤهل لتأمين المباريات في الاستادات والأندية والفعاليات الرياضية.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-wrapper">
+                            <div class="service-badge-row">
+                                <div class="icon-wrapper" style="margin-bottom: 0;"><i class="fa-solid fa-building-user" aria-hidden="true"></i></div>
+                                <span class="special-discount-tag">خصم خاص</span>
+                            </div>
+                        </div>
+                        <h4>تعاقدات الشركات والمصانع</h4>
+                        <p>عقود تغطية إسعافية سنوية ودورية للمؤسسات، المصانع، والشركات مع استجابة فورية وخصم خاص للتعاقدات.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-route" aria-hidden="true"></i></div>
+                        <h4>النقل بين المحافظات والمستشفيات</h4>
+                        <p>سفر آمن ومريح للمسافات الطويلة بين الإسكندرية وجميع محافظات الجمهورية.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon-wrapper"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i></div>
+                        <h4>فحوصات الأشعة والتحاليل</h4>
+                        <p>خدمة مريحة (من السرير للسرير) لنقل المريض ومرافقته داخل المركز وإعادته دون أي عناء.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section-container" id="booking">
+                <h2>حجز سيارة إسعاف أو طلب تأمين</h2>
+                <p>قم بتعبئة البيانات وسيقوم فريق التشغيل بالتواصل معك مباشرة</p>
+
+                <form onsubmit="sendBookingForm(event)">
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label for="reqName">الاسم بالكامل / اسم الجهة</label>
+                            <input type="text" id="reqName" placeholder="أدخل اسمك أو اسم الشركة/النادي" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="reqPhone">رقم الهاتف للتواصل</label>
+                            <input type="tel" id="reqPhone" placeholder="01xxxxxxxx" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="reqFrom">موقع الانطلاق / التغطية</label>
+                            <input type="text" id="reqFrom" placeholder="العنوان أو اسم الاستاد/الموقع" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="reqTo">موقع الوصول / تفاصيل أخرى</label>
+                            <input type="text" id="reqTo" placeholder="اسم المستشفى أو المحافظة" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group" style="margin-top: 15px;">
+                        <label for="reqService">تحديد الخدمة المطلوب حجزها</label>
+                        <select id="reqService" required>
+                            <option value="إسعاف طوارئ فوري">إسعاف طوارئ فوري (24 ساعة)</option>
+                            <option value="مرافقة طبيب متخصص مع الإسعاف">مرافقة طبيب متخصص (أطفال/جراحة/عناية)</option>
+                            <option value="تأمين مبارة / بطولة رياضية">تأمين مباراة / بطولة رياضية</option>
+                            <option value="تعاقدات شركات ومصانع">تعاقدات شركات ومصانع (عقود إسعافية)</option>
+                            <option value="رعاية مركزة متنقلة">رعاية مركزة متنقلة (سيارات فئة A)</option>
+                            <option value="حضانات حديثي الولادة والمبتسرين">حضانات حديثي الولادة والمبتسرين</option>
+                            <option value="نقل طبي بين المحافظات">نقل طبي بين المحافظات</option>
+                            <option value="مشوار فحوصات/أشعة (من السرير للسرير)">مشوار فحوصات/أشعة (من السرير للسرير)</option>
+                            <option value="إسعاف سمنة مفرطة">إسعاف سمنة مفرطة</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit-booking">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> إرسال الطلب فوراً عبر واتساب
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="bottom-action-bar">
+        <a href="tel:01276677640" onclick="return gtag_report_conversion('tel:01276677640', 'phone_call');" class="act-call-btn">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i> اتصل الآن
+        </a>
+        <a href="https://wa.me/201276677640" onclick="return gtag_report_conversion('https://wa.me/201276677640', 'whatsapp_click');" class="act-wa-btn" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> واتساب
+        </a>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © إسعاف إسكندرية - تابع لـ <strong>مركز الإسكندرية لجراحة الأطفال (APS)</strong></p>
+        <p style="margin-top: 8px; font-size: 0.85rem;">
+            التصميم والبرمجة بواسطة 
+            <a href="https://smartvexa.com" target="_blank" rel="noopener noreferrer">Smart VEXA Technologies للبرمجيات والتسويق الرقمي</a>
+        </p>
+    </footer>
+
+    <script>
+        function sendBookingForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('reqName').value;
+            const phone = document.getElementById('reqPhone').value;
+            const from = document.getElementById('reqFrom').value;
+            const to = document.getElementById('reqTo').value;
+            const service = document.getElementById('reqService').value;
+
+            const text = `*طلب سيارة إسعاف / خدمة جديدة - إسعاف إسكندرية (APS)*%0A%0A` +
+                `👤 *الاسم / الجهة:* ${name}%0A` +
+                `📞 *رقم الهاتف:* ${phone}%0A` +
+                `🚑 *نوع الخدمة:* ${service}%0A` +
+                `📍 *الموقع / الانطلاق:* ${from}%0A` +
+                `🏁 *تفاصيل الوصول / التغطية:* ${to}%0A%0A` +
+                `_برجاء سرعة الاستجابة والتواصل._`;
+
+            gtag_report_conversion(`https://wa.me/201276677640?text=${text}`, 'form_submission');
+        }
+    </script>
+</body>
+</html>
